@@ -1,54 +1,30 @@
+import java.util.Scanner;
+
 public class munecosBebe {
-    private int contador = 0; // Contador de instancias
-    private int id; // Código del muñeco
-    private String nombre; // Nombre
-    private int nArticulaciones; // Número de articulaciones
-    private int PrecioU; // Precio 
-    private int EdadLim; // Edad límite
-    private String TipoR; // Tipo de ropa
+    private int id;
+    private String nombre;
+    private int nArticulaciones;
+    private int precioU;
+    private String tipoR;
 
-    public munecosBebe(int id, String nombre, int nArticulaciones, int PrecioU, String TipoR) {
-        this.id = id;
-        this.nombre = nombre;
-        this.nArticulaciones = nArticulaciones;
-        this.PrecioU = PrecioU;
-        this.TipoR = TipoR;
-        incrementarContador(); // Incrementar el contador
+    public void ingresarDatos(Scanner scanner) {
+        System.out.println("Ingrese el ID:");
+        this.id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Ingrese el nombre:");
+        this.nombre = scanner.nextLine();
+        System.out.println("Ingrese el número de articulaciones:");
+        this.nArticulaciones = scanner.nextInt();
+        System.out.println("Ingrese el precio:");
+        this.precioU = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Ingrese el tipo de ropa:");
+        this.tipoR = scanner.nextLine();
     }
 
-    private void incrementarContador() {
-        contador++;
-    }
-
-    public int getContador() {
-        return contador;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getnArticulaciones() {
-        return nArticulaciones;
-    }
-
-    public int getPrecioU() {
-        return PrecioU;
-    }
-
-    public String getTipoR() {
-        return TipoR;
-    }
-
-    public int getEdadLim() {
-        return EdadLim;
-    }
-
-    public void promedioPrecio(int precio) {
-        PrecioU = precio / contador;
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public int getnArticulaciones() { return nArticulaciones; }
+    public int getPrecioU() { return precioU; }
+    public String getTipoR() { return tipoR; }
 }

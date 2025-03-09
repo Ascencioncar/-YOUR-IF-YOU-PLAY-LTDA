@@ -1,0 +1,36 @@
+@startuml your_if_you_play_LTDA
+class Inventario {
+    - int contadorBebe
+    - int contadorAccion
+    - int precioTotalBebe
+    - int precioTotalAccion
+    - int articulacionesMasDe12
+    - int totalMunecos
+    + void agregarMunecoBebe(MunecosBebe)
+    + void agregarMunecoAccion(MunecosAccion)
+    + double promedioPrecioMunecosBebe()
+    + double promedioPrecioMunecosAccion()
+    + int contarMunecosMasDe12Articulaciones()
+    + double porcentajeMunecosAccion()
+}
+
+class MunecosBebe {
+    - int id
+    - String nombre
+    - int nArticulaciones
+    - int precioU
+    - String tipoR
+    + void ingresarDatos(Scanner)
+    + int getnArticulaciones()
+    + int getPrecioU()
+}
+
+class MunecosAccion {
+    - String enemigoP
+    + void ingresarDatos(Scanner)
+}
+
+Inventario --> MunecosBebe
+Inventario --> MunecosAccion
+MunecosAccion --|> MunecosBebe
+@enduml

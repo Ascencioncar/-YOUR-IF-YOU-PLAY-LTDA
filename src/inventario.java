@@ -27,19 +27,11 @@ public class inventario {
     }
 
     public double promedioPrecioMunecosBebe() {
-        if (contadorBebe > 0) {
-            return (double) precioTotalBebe / contadorBebe;
-        } else {
-            return 0; // Evitar división por cero
-        }
+        return contadorBebe > 0 ? (double) precioTotalBebe / contadorBebe : 0;
     }
 
     public double promedioPrecioMunecosAccion() {
-        if (contadorAccion > 0) {
-            return (double) precioTotalAccion / contadorAccion;
-        } else {
-            return 0; // Evitar división por cero
-        }
+        return contadorAccion > 0 ? (double) precioTotalAccion / contadorAccion : 0;
     }
 
     public int contarMunecosMasDe12Articulaciones() {
@@ -47,11 +39,7 @@ public class inventario {
     }
 
     public double porcentajeMunecosAccion() {
-        if (totalMunecos > 0) {
-            return (double) contadorAccion * 100 / totalMunecos;
-        } else {
-            return 0; // Evitar división por cero
-        }
+        return totalMunecos > 0 ? (double) contadorAccion * 100 / totalMunecos : 0;
     }
 
     public static void main(String[] args) {
@@ -65,39 +53,16 @@ public class inventario {
             System.out.println("2. Muñeco de Acción");
             System.out.println("3. Salir");
             int opcion = scanner.nextInt();
+            scanner.nextLine();
 
             if (opcion == 1) {
-                System.out.println("Ingrese el ID:");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                System.out.println("Ingrese el nombre:");
-                String nombre = scanner.nextLine();
-                System.out.println("Ingrese el número de articulaciones:");
-                int nArticulaciones = scanner.nextInt();
-                System.out.println("Ingrese el precio:");
-                int precio = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                System.out.println("Ingrese el tipo de ropa:");
-                String tipoR = scanner.nextLine();
-
-                inv.agregarMunecoBebe(new munecosBebe(id, nombre, nArticulaciones, precio, tipoR));
+                munecosBebe muneco = new munecosBebe();
+                muneco.ingresarDatos(scanner);
+                inv.agregarMunecoBebe(muneco);
             } else if (opcion == 2) {
-                System.out.println("Ingrese el ID:");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                System.out.println("Ingrese el nombre:");
-                String nombre = scanner.nextLine();
-                System.out.println("Ingrese el número de articulaciones:");
-                int nArticulaciones = scanner.nextInt();
-                System.out.println("Ingrese el precio:");
-                int precio = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                System.out.println("Ingrese el tipo de ropa:");
-                String tipoR = scanner.nextLine();
-                System.out.println("Ingrese el enemigo principal:");
-                String enemigoP = scanner.nextLine();
-
-                inv.agregarMunecoAccion(new munecosAccion(id, nombre, nArticulaciones, precio, tipoR, enemigoP));
+                munecosAccion muneco = new munecosAccion();
+                muneco.ingresarDatos(scanner);
+                inv.agregarMunecoAccion(muneco);
             } else if (opcion == 3) {
                 continuar = false;
             } else {
@@ -105,7 +70,6 @@ public class inventario {
             }
         }
 
-        // Calcular y mostrar resultados
         System.out.println("Promedio de precios de los muñecos de bebé: " + inv.promedioPrecioMunecosBebe());
         System.out.println("Promedio de precios de los muñecos de acción: " + inv.promedioPrecioMunecosAccion());
         System.out.println("Cantidad de muñecos con más de 12 articulaciones: " + inv.contarMunecosMasDe12Articulaciones());

@@ -1,13 +1,14 @@
+import java.util.Scanner;
+
 public class munecosAccion extends munecosBebe {
-    private String EnemigoP; // Enemigo principal
-    
+    private String enemigoP;
 
-    public munecosAccion(int id, String nombre, int nArticulaciones, int PrecioU, String TipoR, String enemigoP) {
-        super(id, nombre, nArticulaciones, PrecioU, TipoR);
-        EnemigoP = enemigoP;
+    @Override
+    public void ingresarDatos(Scanner scanner) {
+        super.ingresarDatos(scanner);
+        System.out.println("Ingrese el enemigo principal:");
+        this.enemigoP = scanner.nextLine();
     }
 
-    public String getEnemigoP() {
-        return EnemigoP;
-    }
+    public String getEnemigoP() { return enemigoP; }
 }
