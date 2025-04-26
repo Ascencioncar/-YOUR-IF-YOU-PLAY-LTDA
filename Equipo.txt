@@ -15,4 +15,7 @@ Se requiere:
 
 •        Porcentaje de muñecos de acción.
 
+
+Se realizan cambios de pilas y colas en el proyecto. 
+
 github: https://github.com/Ascencioncar/-YOUR-IF-YOU-PLAY-LTDA
