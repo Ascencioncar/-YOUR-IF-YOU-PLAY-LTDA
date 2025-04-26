@@ -1,0 +1,18 @@
+
+CUARTAS VILLA CARLOS ANDRES   
+
+CESPEDES ZULUAGA CARLOS ANDRES
+
+Equipo #1
+
+La juguetería “YOUR IF YOU PLAY LTDA”, tiene para la venta varios muñecos, estos pueden ser muñecos de acción y muñecos bebe, por los N muñecos de acción se tiene: código del muñeco, nombre, numero de articulaciones, precio unitario, edad límite del niño que puede jugar con él, tipo de ropa, y nombre del enemigo principal; por los M muñecos bebe se tiene: código del muñeco, nombre, numero de articulaciones, precio unitario, edad límite del niño que puede jugar con él, tipo de ropa.
+
+Se requiere:
+
+•        Promedio de precios de los muñecos de acción.
+
+•        ¿Cuántos muñecos tienen más de 12 articulaciones?
+
+•        Porcentaje de muñecos de acción.
+
+github: https://github.com/Ascencioncar/-YOUR-IF-YOU-PLAY-LTDA

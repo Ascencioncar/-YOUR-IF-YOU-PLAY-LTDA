@@ -1,0 +1,341 @@
+// Clase Nodo
+Clase Nodo:
+    Atributo dato: Objeto
+    Atributo siguiente: Nodo
+
+    Constructor(unDato):
+        dato = unDato
+        siguiente = nulo
+
+    Método getDato():
+        Retornar dato
+
+    Método setDato(unDato):
+        dato = unDato
+
+    Método getSiguiente():
+        Retornar siguiente
+
+    Método setSiguiente(unSiguiente):
+        siguiente = unSiguiente
+
+// Clase Pila
+Clase Pila:
+    Atributo maxsize: Entero
+    Atributo size: Entero
+    Atributo top: Nodo
+
+    Constructor(n):
+        maxsize = n
+        top = nulo
+        size = 0
+
+    Método isEmpty():
+        Retornar (size <= 0)
+
+    Método isFull():
+        Retornar (size >= maxsize)
+
+    Método push(unDato):
+        Si no es Lleno():
+            size = size + 1
+            nuevoNodo = nuevo Nodo(unDato)
+            nuevoNodo.siguiente = top
+            top = nuevoNodo
+        Sino:
+            Mostrar "¡Pila Llena! No se puede agregar más."
+
+    Método pop():
+        Si no es Vacío():
+            dato = top.dato
+            top = top.siguiente
+            size = size - 1
+            Retornar dato
+        Sino:
+            Mostrar "¡Pila Vacía! No se puede sacar."
+            Retornar nulo
+
+    Método peek():
+        Si no es Vacío():
+            Retornar top.dato
+        Sino:
+            Mostrar "¡Pila Vacía! No hay elemento en el tope."
+            Retornar nulo
+
+    Método getSize():
+        Retornar size
+
+    Método getMaxsize():
+        Retornar maxsize
+
+// Clase Cola
+Clase Cola:
+    Atributo maxsize: Entero
+    Atributo size: Entero
+    Atributo frente: Nodo
+    Atributo ultimo: Nodo
+
+    Constructor(n):
+        maxsize = n
+        frente = nulo
+        ultimo = nulo
+        size = 0
+
+    Método isEmpty():
+        Retornar (size <= 0)
+
+    Método isFull():
+        Retornar (size >= maxsize)
+
+    Método enqueue(unDato):
+        Si no es Lleno():
+            size = size + 1
+            nuevoNodo = nuevo Nodo(unDato)
+            Si es Vacío():
+                frente = nuevoNodo
+            Sino:
+                ultimo.siguiente = nuevoNodo
+            ultimo = nuevoNodo
+        Sino:
+            Mostrar "¡Cola Llena! No se puede encolar más."
+
+    Método dequeue():
+        Si no es Vacío():
+            dato = frente.dato
+            frente = frente.siguiente
+            size = size - 1
+            Si es Vacío():
+                ultimo = nulo
+            Retornar dato
+        Sino:
+            Mostrar "¡Cola Vacía! No se puede desencolar."
+            Retornar nulo
+
+    Método peek():
+        Si no es Vacío():
+            Retornar frente.dato
+        Sino:
+            Mostrar "¡Cola Vacía! No hay elemento al frente."
+            Retornar nulo
+
+    Método getSize():
+        Retornar size
+
+    Método getMaxsize():
+        Retornar maxsize
+
+// Clase munecosBebe
+Clase munecosBebe:
+    Atributo id: Entero
+    Atributo nombre: Texto
+    Atributo nArticulaciones: Entero
+    Atributo precioU: Entero
+    Atributo tipoR: Texto
+
+    Constructor(unId, unNombre, unasArticulaciones, unPrecio, unTipoR):
+        id = unId
+        nombre = unNombre
+        nArticulaciones = unasArticulaciones
+        precioU = unPrecio
+        tipoR = unTipoR
+
+    Constructor(): // Constructor vacío
+
+    Método ingresarDatos(scanner):
+        Mostrar "Ingrese el ID:"
+        id = leer entero desde scanner
+        leer línea desde scanner // Consumir la nueva línea
+        Mostrar "Ingrese el nombre:"
+        nombre = leer texto desde scanner
+        Mostrar "Ingrese el número de articulaciones:"
+        nArticulaciones = leer entero desde scanner
+        Mostrar "Ingrese el precio:"
+        precioU = leer entero desde scanner
+        leer línea desde scanner // Consumir la nueva línea
+        Mostrar "Ingrese el tipo de ropa:"
+        tipoR = leer texto desde scanner
+
+    Método getId():
+        Retornar id
+
+    Método getNombre():
+        Retornar nombre
+
+    Método getnArticulaciones():
+        Retornar nArticulaciones
+
+    Método getPrecioU():
+        Retornar precioU
+
+    Método getTipoR():
+        Retornar tipoR
+
+    Método toString():
+        Retornar "Muñeco Bebé{" + ... + "}"
+
+// Clase munecosAccion
+Clase munecosAccion hereda de munecosBebe:
+    Atributo enemigoP: Texto
+
+    Constructor(unId, unNombre, unasArticulaciones, unPrecio, unEnemigoP):
+        Llamar constructor de la superclase con (unId, unNombre, unasArticulaciones, unPrecio, nulo)
+        enemigoP = unEnemigoP
+
+    Constructor(): // Constructor vacío
+
+    Método ingresarDatos(scanner):
+        Llamar método ingresarDatos de la superclase con scanner
+        Mostrar "Ingrese el enemigo principal:"
+        enemigoP = leer texto desde scanner
+
+    Método getEnemigoP():
+        Retornar enemigoP
+
+    Método setEnemigoP(unEnemigoP):
+        enemigoP = unEnemigoP
+
+    Método toString():
+        Retornar "Muñeco de Acción{" + ... + "} " + Llamar método toString de la superclase
+
+    Método getNombre(): // Heredado
+
+    Método getPrecioU(): // Heredado
+
+    Método getnArticulaciones(): // Heredado
+
+// Clase inventario
+Clase inventario:
+    Atributo contadorBebe: Entero = 0
+    Atributo contadorAccion: Entero = 0
+    Atributo precioTotalBebe: Entero = 0
+    Atributo precioTotalAccion: Entero = 0
+    Atributo articulacionesMasDe12: Entero = 0
+    Atributo totalMunecos: Entero = 0
+    Atributo munecosRecienAgregados: Pila = nueva Pila(100)
+    Atributo munecosProximosAgotarse: Cola = nueva Cola(50)
+
+    Método agregarMunecoBebe(muneco):
+        contadorBebe = contadorBebe + 1
+        precioTotalBebe = precioTotalBebe + muneco.getPrecioU()
+        Si muneco.getnArticulaciones() > 12:
+            articulacionesMasDe12 = articulacionesMasDe12 + 1
+        totalMunecos = totalMunecos + 1
+        munecosRecienAgregados.push(muneco)
+        verificarAgotamiento(muneco)
+
+    Método agregarMunecoAccion(muneco):
+        contadorAccion = contadorAccion + 1
+        precioTotalAccion = precioTotalAccion + muneco.getPrecioU()
+        Si muneco.getnArticulaciones() > 12:
+            articulacionesMasDe12 = articulacionesMasDe12 + 1
+        totalMunecos = totalMunecos + 1
+        munecosRecienAgregados.push(muneco)
+        verificarAgotamiento(muneco)
+
+    Método verificarAgotamiento(muneco):
+        nombreMuneco = ""
+        Si muneco es instancia de munecosBebe:
+            nombreMuneco = muneco.getNombre()
+        Sino Si muneco es instancia de munecosAccion:
+            nombreMuneco = muneco.getNombre()
+
+        Si (totalMunecos mod 5 == 0) Y (munecosProximosAgotarse.getSize() < munecosProximosAgotarse.getMaxsize()):
+            munecosProximosAgotarse.enqueue(nombreMuneco + " (Próximo a agotarse)")
+
+    Método promedioPrecioMunecosBebe():
+        Si contadorBebe > 0:
+            Retornar (precioTotalBebe / contadorBebe)
+        Sino:
+            Retornar 0
+
+    Método promedioPrecioMunecosAccion():
+        Si contadorAccion > 0:
+            Retornar (precioTotalAccion / contadorAccion)
+        Sino:
+            Retornar 0
+
+    Método contarMunecosMasDe12Articulaciones():
+        Retornar articulacionesMasDe12
+
+    Método porcentajeMunecosAccion():
+        Si totalMunecos > 0:
+            Retornar (contadorAccion * 100 / totalMunecos)
+        Sino:
+            Retornar 0
+
+    Método mostrarRecienAgregados():
+        pilaAux = nueva Pila(munecosRecienAgregados.getMaxsize())
+        mensaje = "Muñecos recién agregados (Pila - del más reciente al más antiguo):\n"
+        Si munecosRecienAgregados.isEmpty():
+            mensaje = mensaje + "La pila de recién agregados está vacía."
+        Sino:
+            Mientras no munecosRecienAgregados.isEmpty():
+                muneco = munecosRecienAgregados.pop()
+                mensaje = mensaje + "- " + muneco.toString() + "\n"
+                pilaAux.push(muneco)
+            Mientras no pilaAux.isEmpty():
+                munecosRecienAgregados.push(pilaAux.pop())
+        Mostrar ventana con mensaje
+
+    Método obtenerUltimoAgregado():
+        Retornar munecosRecienAgregados.peek()
+
+    Método mostrarProximosAgotarse():
+        colaAux = nueva Cola(munecosProximosAgotarse.getMaxsize())
+        mensaje = "Muñecos próximos a agotarse (Cola - en orden de detección):\n"
+        Si munecosProximosAgotarse.isEmpty():
+            mensaje = mensaje + "La cola de próximos a agotarse está vacía."
+        Sino:
+            Mientras no munecosProximosAgotarse.isEmpty():
+                muneco = munecosProximosAgotarse.dequeue()
+                mensaje = mensaje + "- " + muneco.toString() + "\n"
+                colaAux.enqueue(muneco)
+            Mientras no colaAux.isEmpty():
+                munecosProximosAgotarse.enqueue(colaAux.dequeue())
+        Mostrar ventana con mensaje
+
+    Método obtenerPrimeroProximoAgotarse():
+        Retornar munecosProximosAgotarse.peek()
+
+    Método principal():
+        inv = nueva inventario()
+        continuar = verdadero
+
+        Mientras continuar:
+            opciones = ["Agregar Muñeco Bebé", "Agregar Muñeco de Acción", "Mostrar Estadísticas", "Mostrar Recién Agregados (Pila)", "Mostrar Próximos a Agotarse (Cola)", "Salir"]
+            seleccion = Mostrar ventana de opciones con opciones
+
+            Si seleccion es 0: // Agregar Muñeco Bebé
+                Mostrar ventana para ingresar datos del Muñeco Bebé
+                idBebe = leer ID desde ventana
+                nombreBebe = leer nombre desde ventana
+                articulacionesBebe = leer número de articulaciones desde ventana
+                precioBebe = leer precio desde ventana
+                tipoRopaBebe = leer tipo de ropa desde ventana
+                Si no hubo cancelación en la entrada:
+                    nuevoBebe = nuevo munecosBebe(idBebe, nombreBebe, articulacionesBebe, precioBebe, tipoRopaBebe)
+                    inv.agregarMunecoBebe(nuevoBebe)
+                    Mostrar ventana "Muñeco Bebé agregado."
+            Sino Si seleccion es 1: // Agregar Muñeco de Acción
+                Mostrar ventana para ingresar datos del Muñeco de Acción
+                idAccion = leer ID desde ventana
+                nombreAccion = leer nombre desde ventana
+                articulacionesAccion = leer número de articulaciones desde ventana
+                precioAccion = leer precio desde ventana
+                enemigoAccion = leer enemigo principal desde ventana
+                Si no hubo cancelación en la entrada:
+                    nuevoAccion = nuevo munecosAccion(idAccion, nombreAccion, articulacionesAccion, precioAccion, enemigoAccion)
+                    inv.agregarMunecoAccion(nuevoAccion)
+                    Mostrar ventana "Muñeco de Acción agregado."
+            Sino Si seleccion es 2: // Mostrar Estadísticas
+                estadisticas = "--- Estadísticas ---\n" + ...
+                Mostrar ventana con estadísticas
+            Sino Si seleccion es 3: // Mostrar Recién Agregados (Pila)
+                inv.mostrarRecienAgregados()
+            Sino Si seleccion es 4: // Mostrar Próximos a Agotarse (Cola)
+                inv.mostrarProximosAgotarse()
+            Sino Si seleccion es 5 o seleccion fue cerrar ventana: // Salir
+                continuar = falso
+                Mostrar ventana "¡Hasta luego!"
+            Sino:
+                Mostrar ventana "Opción no válida. Intente de nuevo."

@@ -1,36 +1,108 @@
-@startuml your_if_you_play_LTDA
-class Inventario {
-    - int contadorBebe
-    - int contadorAccion
-    - int precioTotalBebe
-    - int precioTotalAccion
-    - int articulacionesMasDe12
-    - int totalMunecos
-    + void agregarMunecoBebe(MunecosBebe)
-    + void agregarMunecoAccion(MunecosAccion)
-    + double promedioPrecioMunecosBebe()
-    + double promedioPrecioMunecosAccion()
-    + int contarMunecosMasDe12Articulaciones()
-    + double porcentajeMunecosAccion()
+@startuml YOUR-IF-YOU-PLAY-LTDA
+
+package inventario {
+  class inventario {
+    - contadorBebe: int
+    - contadorAccion: int
+    - precioTotalBebe: int
+    - precioTotalAccion: int
+    - articulacionesMasDe12: int
+    - totalMunecos: int
+    - munecosRecienAgregados: Pila
+    - munecosProximosAgotarse: Cola
+    + agregarMunecoBebe(munecosBebe)
+    + agregarMunecoAccion(munecosAccion)
+    - verificarAgotamiento(Object)
+    + promedioPrecioMunecosBebe(): double
+    + promedioPrecioMunecosAccion(): double
+    + contarMunecosMasDe12Articulaciones(): int
+    + porcentajeMunecosAccion(): double
+    + mostrarRecienAgregados(): void
+    + obtenerUltimoAgregado(): Object
+    + mostrarProximosAgotarse(): void
+    + obtenerPrimeroProximoAgotarse(): Object
+    + main(String[]): void
+  }
 }
 
-class MunecosBebe {
-    - int id
-    - String nombre
-    - int nArticulaciones
-    - int precioU
-    - String tipoR
-    + void ingresarDatos(Scanner)
-    + int getnArticulaciones()
-    + int getPrecioU()
+package estructuras_datos {
+  class Pila {
+    # maxsize: int
+    - size: int
+    - top: Nodo
+    + Pila(int)
+    + isEmpty(): boolean
+    + isFull(): boolean
+    + push(Object): void
+    + pop(): Object
+    + peek(): Object
+    + getSize(): int
+    + getMaxsize(): int
+  }
+
+  class Cola {
+    # maxsize: int
+    - size: int
+    - frente: Nodo
+    - ultimo: Nodo
+    + Cola(int)
+    + isEmpty(): boolean
+    + isFull(): boolean
+    + enqueue(Object): void
+    + dequeue(): Object
+    + peek(): Object
+    + getSize(): int
+    + getMaxsize(): int
+  }
+
+  class Nodo {
+    + dato: Object
+    + siguiente: Nodo
+    + Nodo(Object)
+    + getDato(): Object
+    + setDato(Object): void
+    + getSiguiente(): Nodo
+    + setSiguiente(Nodo): void
+  }
 }
 
-class MunecosAccion {
-    - String enemigoP
-    + void ingresarDatos(Scanner)
+package munecos {
+  class munecosBebe {
+    - id: int
+    - nombre: String
+    - nArticulaciones: int
+    - precioU: int
+    - tipoR: String
+    + munecosBebe(int, String, int, int, String)
+    + munecosBebe()
+    + ingresarDatos(Scanner): void
+    + getId(): int
+    + getNombre(): String
+    + getnArticulaciones(): int
+    + getPrecioU(): int
+    + getTipoR(): String
+    + toString(): String
+  }
+
+  class munecosAccion extends munecosBebe {
+    - enemigoP: String
+    + munecosAccion(int, String, int, int, String)
+    + munecosAccion()
+    + ingresarDatos(Scanner): void
+    + getEnemigoP(): String
+    + setEnemigoP(String): void
+    + toString(): String
+    + getNombre(): String
+    + getPrecioU(): int
+    + getnArticulaciones(): int
+  }
 }
 
-Inventario --> MunecosBebe
-Inventario --> MunecosAccion
-MunecosAccion --|> MunecosBebe
+inventario.inventario ..> estructuras_datos.Pila : usa
+inventario.inventario ..> estructuras_datos.Cola : usa
+inventario.inventario ..> munecos.munecosBebe : usa
+inventario.inventario ..> munecos.munecosAccion : usa
+estructuras_datos.Pila ..> estructuras_datos.Nodo : usa
+estructuras_datos.Cola ..> estructuras_datos.Nodo : usa
+munecos.munecosAccion --|> munecos.munecosBebe : extends
 @enduml
